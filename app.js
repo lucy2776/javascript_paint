@@ -2,8 +2,8 @@ const canvas = document.querySelector("canvas")
 
 const ctx = canvas.getContext("2d")
 
-canvas.width = 700
-canvas.height = 700
+canvas.width = 710
+canvas.height = 710
 
 ctx.lineCap = "round"
 
@@ -185,8 +185,8 @@ canvas.onmousemove = function (e) {
 mousedown > mousemove > mouseup, mouseleave
 ****************/
 
-const cw = 700
-const ch = 700
+const cw = 710
+const ch = 710
 
 let isPainting = false
 
@@ -216,6 +216,10 @@ canvas.addEventListener("mousemove", onMove)
 canvas.addEventListener("mousedown", startPainting)
 canvas.addEventListener("mouseup", cancelPainting)
 canvas.addEventListener("mouseleave", cancelPainting)
+
+canvas.addEventListener("touchmove", onMove)
+canvas.addEventListener("touchstart", startPainting)
+canvas.addEventListener("touchend", cancelPainting)
 
 
 // line-width *******************************************
