@@ -354,16 +354,3 @@ function onSaveClick() {
 
 saveBtn.addEventListener("click", onSaveClick)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
