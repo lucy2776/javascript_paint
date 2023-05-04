@@ -190,19 +190,44 @@ const ch = 710
 
 let isPainting = false
 
-function onMove(e) {
-    if (isPainting) {
-        ctx.lineTo(e.offsetX, e.offsetY)
-        ctx.stroke()
+// function onMove(e) {
+//     if (isPainting) {
+//         ctx.lineTo(e.offsetX, e.offsetY)
+//         ctx.stroke()
 
-        return
+//         return
+//     }
+
+//     // 선 그을 때마다 새로운 Path
+//     // 선 굵기 변경할 때마다 다른 Path
+//     ctx.beginPath()
+
+//     ctx.moveTo(e.offsetX, e.offsetY)
+// }
+function onMove(event) {
+
+    let x, y;
+
+    // 마우스 이벤트와 터치 이벤트를 구분하여 좌표 값을 설정합니다.
+    if (event.type === "mousemove") {
+        x = event.offsetX;
+        y = event.offsetY;
+    } else if (event.type === "touchmove") {
+        event.preventDefault(); // 이벤트를 처리하지 않도록 기본 동작을 방지
+        x = event.touches[0].clientX - event.target.offsetLeft;
+        y = event.touches[0].clientY - event.target.offsetTop;
+    }
+
+    if (isPainting) {
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        return;
     }
 
     // 선 그을 때마다 새로운 Path
     // 선 굵기 변경할 때마다 다른 Path
-    ctx.beginPath()
-
-    ctx.moveTo(e.offsetX, e.offsetY)
+    ctx.beginPath();
+    ctx.moveTo(x, y);
 }
 function startPainting(e) {
     isPainting = true
