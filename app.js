@@ -218,8 +218,9 @@ canvas.addEventListener("mouseup", cancelPainting)
 canvas.addEventListener("mouseleave", cancelPainting)
 
 canvas.addEventListener("touchmove", onMove)
-canvas.addEventListener("touchstart", startPainting)
-canvas.addEventListener("touchend", cancelPainting)
+canvas.addEventListener("touchstart", startPainting, false)
+canvas.addEventListener("touchend", cancelPainting, false)
+canvas.addEventListener("touchcancel", cancelPainting, false)
 
 
 // line-width *******************************************
